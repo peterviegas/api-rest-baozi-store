@@ -58,3 +58,16 @@ CREATE TABLE pedido (
 CREATE INDEX idx_pedido_cliente ON pedido(cliente_id);
 CREATE INDEX idx_pedido_produto ON pedido(produto_id);
 ```
+
+### Estrutura do projeto
+
+```
+com.baozi
+ ├── controller
+ ├── service
+ ├── repository
+ ├── entity
+ ├── dto
+ └── mapper
+```
+

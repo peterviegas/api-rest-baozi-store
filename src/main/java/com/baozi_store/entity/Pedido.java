@@ -28,6 +28,9 @@ public class Pedido implements Serializable {
     @Column(nullable = false)
     private Integer quantidade;
 
+    public Pedido() {
+    }
+    
 	public Pedido(Long id, Cliente cliente, Produto produto, Integer quantidade) {
 		super();
 		this.id = id;

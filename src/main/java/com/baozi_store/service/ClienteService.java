@@ -1,5 +1,6 @@
 package com.baozi_store.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.baozi_store.dto.ClienteDTO;
 import com.baozi_store.entity.Cliente;
+import com.baozi_store.exception.ResourceNotFoundException;
 import com.baozi_store.mapper.ClienteMapper;
 import com.baozi_store.repository.ClienteRepository;
 
@@ -20,7 +22,7 @@ public class ClienteService {
 	
 	public ClienteDTO findById (Long id) {
 		Cliente cliente = clienteRepository.findById(id)
-				.orElseThrow(() -> new RuntimeException("Cliente com id: " + id + " não encontrado"));
+				.orElseThrow(() -> new ResourceNotFoundException("Cliente com id: " + id + " não encontrado"));
 		
 		return ClienteMapper.toDTO(cliente);
 	}
@@ -39,22 +41,28 @@ public class ClienteService {
 		}
 		
 		Cliente cliente = ClienteMapper.toEntity(dto);
+		
+		LocalDate data = LocalDate.now();
+		cliente.setClienteDesde(data);
+		
 		cliente = clienteRepository.save(cliente);
 		
 		return ClienteMapper.toDTO(cliente);
 	}
 	
-	public ClienteDTO update (ClienteDTO dto) {
+	public ClienteDTO update (Long id, ClienteDTO dto) {
 		if (dto.getId() == null) {
 			throw new IllegalArgumentException("ID é obrigatório para atualização");
 		}
 		
 		Cliente cliente = clienteRepository.findById(dto.getId())
-	            .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
+	            .orElseThrow(() -> new ResourceNotFoundException("Cliente não encontrado"));
 		
 		//Atualiza apenas os campos
 		cliente.setNome(dto.getNome());
-		cliente.setClienteDesde(dto.getClienteDesde());
+		if (dto.getClienteDesde() != null) {
+			cliente.setClienteDesde(dto.getClienteDesde());
+		}
 		
 		cliente = clienteRepository.save(cliente);
 		

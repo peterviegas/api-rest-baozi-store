@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.baozi_store.dto.ProdutoDTO;
 import com.baozi_store.entity.Produto;
+import com.baozi_store.exception.ResourceNotFoundException;
 import com.baozi_store.mapper.ProdutoMapper;
 import com.baozi_store.repository.ProdutoRepository;
 
@@ -21,7 +22,7 @@ public class ProdutoService {
 	
 	public ProdutoDTO findById (Long id) {
 		Produto produto = produtoRepository.findById(id)
-				.orElseThrow(() -> new RuntimeException("Produto com id: " + id + " não encontrado"));
+				.orElseThrow(() -> new ResourceNotFoundException("Produto com id: " + id + " não encontrado"));
 		
 		return ProdutoMapper.toDTO(produto);
 	}
@@ -45,13 +46,13 @@ public class ProdutoService {
 		return ProdutoMapper.toDTO(produto);
 	}
 	
-	public ProdutoDTO update (ProdutoDTO dto) {
+	public ProdutoDTO update (Long id, ProdutoDTO dto) {
 		if (dto.getId() == null) {
 			throw new IllegalArgumentException("Produto precisa conter id para criação");
 		}
 		
 		Produto produto = produtoRepository.findById(dto.getId())
-				.orElseThrow(() -> new RuntimeException("Produto com id" + dto.getId() + " não encontrado"));
+				.orElseThrow(() -> new ResourceNotFoundException("Produto com id" + dto.getId() + " não encontrado"));
 		
 		//Atualiza apenas os campos
 		produto.setEstoque(dto.getEstoque());

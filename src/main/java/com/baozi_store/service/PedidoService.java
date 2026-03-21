@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.baozi_store.dto.PedidoDTO;
 import com.baozi_store.entity.Pedido;
+import com.baozi_store.exception.ResourceNotFoundException;
 import com.baozi_store.mapper.PedidoMapper;
 import com.baozi_store.repository.PedidoRepository;
 
@@ -21,7 +22,7 @@ public class PedidoService {
 	
 	public PedidoDTO findById (Long id) {
 		Pedido pedido = pedidoRepository.findById(id)
-				.orElseThrow(() -> new RuntimeException("Pedido com id: " + id + " não encontrado"));
+				.orElseThrow(() -> new ResourceNotFoundException("Pedido com id: " + id + " não encontrado"));
 				
 		return PedidoMapper.toDTO(pedido);
 	}
@@ -47,13 +48,13 @@ public class PedidoService {
 		
 	}
 	
-	public PedidoDTO update (PedidoDTO dto) {
+	public PedidoDTO update (Long id, PedidoDTO dto) {
 		if ( dto.getId() == null) {
 			throw new IllegalArgumentException("Pedido não pode ter o id null");
 		}
 		
 		Pedido pedido = pedidoRepository.findById(dto.getId())
-				.orElseThrow(() -> new RuntimeException("Pedido com id: " + dto.getId() + " não encontrado"));
+				.orElseThrow(() -> new ResourceNotFoundException("Pedido com id: " + dto.getId() + " não encontrado"));
 		
 		pedido.setCliente(dto.getCliente());
 		pedido.setProduto(dto.getProduto());

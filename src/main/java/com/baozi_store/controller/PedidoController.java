@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,9 +40,9 @@ public class PedidoController {
         return ResponseEntity.ok(pedidoService.create(pedidoDTO));
     }
 
-    @PostMapping
-    public ResponseEntity<PedidoDTO> update(@RequestBody PedidoDTO pedidoDTO) {
-        return ResponseEntity.ok(pedidoService.update(pedidoDTO));
+    @PutMapping("/{id}")
+    public ResponseEntity<PedidoDTO> update(@PathVariable Long id, @RequestBody PedidoDTO pedidoDTO) {
+    	return ResponseEntity.ok(pedidoService.update(id, pedidoDTO));
     }    
 
     @DeleteMapping("/{id}")

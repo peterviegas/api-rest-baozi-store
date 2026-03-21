@@ -120,6 +120,8 @@ com.baozi
 
 ### Testes forçando erro
 
+### Cliente
+
 Passando um id não existente
 <img width="1084" height="414" alt="image" src="https://github.com/user-attachments/assets/2817140f-a1a6-4c0f-a211-6d1ad122f02b" />
 
@@ -132,6 +134,37 @@ Update sem chave do id do cliente
 Update com parâmetros mas com id inválido
 <img width="1088" height="464" alt="image" src="https://github.com/user-attachments/assets/98b9875b-3329-417e-ae65-8fa574f292f2" />
 
+---
+
+### Produto
+
+Passando um id não existente
+<img width="1087" height="440" alt="image" src="https://github.com/user-attachments/assets/5c026df5-f78f-4c29-9acd-21307927448b" />
+
+Criação sem passar parâmetros
+<img width="1095" height="493" alt="image" src="https://github.com/user-attachments/assets/f9713768-fe86-410a-8c98-c78612f668f6" />
+
+Update sem chave id do Produto
+<img width="1090" height="477" alt="image" src="https://github.com/user-attachments/assets/363a8829-cf7e-4905-be06-6990a0c20223" />
+
+Update com parâmetros mas com id inválido
+<img width="1099" height="488" alt="image" src="https://github.com/user-attachments/assets/46692215-2fe6-4149-8c68-670946f46d8b" />
+
+---
+
+### Pedido
+
+Passando um id não existente
+<img width="1093" height="429" alt="image" src="https://github.com/user-attachments/assets/b4e81068-853b-4a13-aaf3-ba87d692d9e7" />
+
+Criação sem passar parâmetros
+<img width="1097" height="436" alt="image" src="https://github.com/user-attachments/assets/c2ac2797-671d-4f96-989e-844254a95dd6" />
+
+Update sem chave id do Pedido
+<img width="1077" height="604" alt="image" src="https://github.com/user-attachments/assets/66649cd9-4e5f-4b39-99b3-3b8ee89f0a0a" />
+
+Update com parâmetros mas com id inválido
+<img width="1089" height="609" alt="image" src="https://github.com/user-attachments/assets/1afae6fe-9d42-4a4c-b262-0ec06682cdc2" />
 
 
 

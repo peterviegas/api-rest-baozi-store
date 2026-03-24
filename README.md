@@ -2,9 +2,12 @@
 API REST - Boazi Store
 
 Disciplica: Desenvolvimento Web Back-End
+
 Tecnologias: Java, Spring Boot, Spring Data JPA, MySQL, Postman
 
-By Peter
+This project was created to support a friend who is beginning his journey in Java and Spring Boot.
+
+By Peter 
 
 ---
 

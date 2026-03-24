@@ -1,10 +1,10 @@
-### Trabalho de desenvolvimento Web Back-End
+### Simple project de desenvolvimento Web Back-End
 API REST - Boazi Store
 
 Disciplica: Desenvolvimento Web Back-End
 Tecnologias: Java, Spring Boot, Spring Data JPA, MySQL, Postman
 
-By: Samuel
+By Peter
 
 ---
 
